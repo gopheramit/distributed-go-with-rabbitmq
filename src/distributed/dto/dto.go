@@ -5,6 +5,7 @@ import (
 )
 
 type SensorMessage struct {
+	Name   string
 	Url    string
 	Js     bool
 	Header bool

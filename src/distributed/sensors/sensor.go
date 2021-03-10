@@ -61,6 +61,7 @@ func main() {
 	//	for range signal {
 	//	calcValue()
 	reading := dto.SensorMessage{
+		Name:   *name,
 		Url:    url,
 		Js:     false,
 		Header: false,
@@ -111,6 +112,28 @@ func publishQueueName(ch *amqp.Channel) {
 }
 
 /*
+func client() {
+	conn, ch, q := GetQueue()
+	defer conn.Close()
+	defer ch.Close()
+
+	msgs, err := ch.Consume(
+		q.Name, //queue string,
+		"",     //consumer string,
+		true,   //autoAck bool,
+		false,  //exclusive bool,
+		false,  //noLocal bool,
+		false,  //noWait bool,
+		nil)    //args amqp.Table)
+
+	failOnError(err, "Failed to register a consumer")
+
+	for msg := range msgs {
+		log.Printf("Received message with message: %s", msg.Body)
+	}
+}
+
+
 func calcValue() {
 	var maxStep, minStep float64
 

@@ -1,11 +1,12 @@
 package coordinator
-/*
+
 import (
 	"bytes"
-	"distributed/dto"
-	"distributed/qutils"
 	"encoding/gob"
 	"fmt"
+
+	"github.com/gopheramit/distributed-go-with-rabbitmq/src/distributed/dto"
+	"github.com/gopheramit/distributed-go-with-rabbitmq/src/distributed/qutils"
 	"github.com/streadway/amqp"
 )
 
@@ -21,7 +22,7 @@ type QueueListener struct {
 func NewQueueListener() *QueueListener {
 	ql := QueueListener{
 		sources: make(map[string]<-chan amqp.Delivery),
-		ea:      NewEventAggregator(),
+		//ea:      NewEventAggregator(),
 	}
 
 	ql.conn, ql.ch = qutils.GetChannel(url)
@@ -41,10 +42,10 @@ func (ql *QueueListener) DiscoverSensors() {
 
 	ql.ch.Publish(
 		qutils.SensorDiscoveryExchange, //exchange string,
-		"",                //key string,
-		false,             //mandatory bool,
-		false,             //immediate bool,
-		amqp.Publishing{}) //msg amqp.Publishing)
+		"",                             //key string,
+		false,                          //mandatory bool,
+		false,                          //immediate bool,
+		amqp.Publishing{})              //msg amqp.Publishing)
 }
 
 func (ql *QueueListener) ListenForNewSource() {
@@ -102,12 +103,13 @@ func (ql *QueueListener) AddListener(msgs <-chan amqp.Delivery) {
 		fmt.Printf("Received message: %v\n", sd)
 
 		ed := EventData{
-			Name:      sd.Name,
-			Timestamp: sd.Timestamp,
-			Value:     sd.Value,
+			Name:   sd.Name,
+			Url:    sd.Url,
+			Js:     sd.Js,
+			Header: sd.Header,
+			Html:   sd.Html,
 		}
 
 		ql.ea.PublishEvent("MessageReceived_"+msg.RoutingKey, ed)
 	}
 }
-*/
