@@ -1,6 +1,9 @@
 package coordinator
 
-/*
+import (
+	"time"
+)
+
 type EventAggregator struct {
 	listeners map[string][]func(EventData)
 }
@@ -25,10 +28,9 @@ func (ea *EventAggregator) PublishEvent(name string, eventData EventData) {
 }
 
 type EventData struct {
-	Name   string
-	Url    string
-	Js     bool
-	Header bool
-	Html   bool
+	Name string
+	//Value     float64
+	Timestamp time.Time
+	Url       string
+	Js        bool
 }
-*/

@@ -2,6 +2,8 @@ package coordinator
 
 import (
 	"bytes"
+	//"distributed/dto"
+	//"distributed/qutils"
 	"encoding/gob"
 	"fmt"
 
@@ -16,13 +18,13 @@ type QueueListener struct {
 	conn    *amqp.Connection
 	ch      *amqp.Channel
 	sources map[string]<-chan amqp.Delivery
-	//ea      *EventAggregator
+	ea      *EventAggregator
 }
 
 func NewQueueListener() *QueueListener {
 	ql := QueueListener{
 		sources: make(map[string]<-chan amqp.Delivery),
-		//ea:      NewEventAggregator(),
+		ea:      NewEventAggregator(),
 	}
 
 	ql.conn, ql.ch = qutils.GetChannel(url)
@@ -101,16 +103,13 @@ func (ql *QueueListener) AddListener(msgs <-chan amqp.Delivery) {
 		d.Decode(sd)
 
 		fmt.Printf("Received message: %v\n", sd)
-		/*
-			ed := EventData{
-				Name:   sd.Name,
-				Url:    sd.Url,
-				Js:     sd.Js,
-				Header: sd.Header,
-				Html:   sd.Html,
-			}
 
-			ql.ea.PublishEvent("MessageReceived_"+msg.RoutingKey, ed)
-		*/
+		ed := EventData{
+			Name:      sd.Name,
+			Timestamp: sd.Timestamp,
+			Js:        sd.Js,
+		}
+
+		ql.ea.PublishEvent("MessageReceived_"+msg.RoutingKey, ed)
 	}
 }
