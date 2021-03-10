@@ -1,5 +1,5 @@
 package coordinator
-
+/*
 import (
 	"time"
 )
@@ -32,3 +32,4 @@ type EventData struct {
 	Value     float64
 	Timestamp time.Time
 }
+*/

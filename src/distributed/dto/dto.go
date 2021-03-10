@@ -2,13 +2,13 @@ package dto
 
 import (
 	"encoding/gob"
-	"time"
 )
 
 type SensorMessage struct {
-	Name      string
-	Value     float64
-	Timestamp time.Time
+	Url    string
+	Js     bool
+	Header bool
+	Html   bool
 }
 
 func init() {

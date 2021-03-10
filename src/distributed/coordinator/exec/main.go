@@ -1,5 +1,5 @@
 package main
-
+/*
 import (
 	"distributed/coordinator"
 	"fmt"
@@ -12,3 +12,4 @@ func main() {
 	var a string
 	fmt.Scanln(&a)
 }
+*/

@@ -1,12 +1,11 @@
 package coordinator
-
+/*
 import (
 	"bytes"
 	"distributed/dto"
 	"distributed/qutils"
 	"encoding/gob"
 	"fmt"
-
 	"github.com/streadway/amqp"
 )
 
@@ -42,10 +41,10 @@ func (ql *QueueListener) DiscoverSensors() {
 
 	ql.ch.Publish(
 		qutils.SensorDiscoveryExchange, //exchange string,
-		"",                             //key string,
-		false,                          //mandatory bool,
-		false,                          //immediate bool,
-		amqp.Publishing{})              //msg amqp.Publishing)
+		"",                //key string,
+		false,             //mandatory bool,
+		false,             //immediate bool,
+		amqp.Publishing{}) //msg amqp.Publishing)
 }
 
 func (ql *QueueListener) ListenForNewSource() {
@@ -111,3 +110,4 @@ func (ql *QueueListener) AddListener(msgs <-chan amqp.Delivery) {
 		ql.ea.PublishEvent("MessageReceived_"+msg.RoutingKey, ed)
 	}
 }
+*/
