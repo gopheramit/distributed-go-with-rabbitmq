@@ -1,5 +1,6 @@
 package coordinator
 
+/*
 type EventAggregator struct {
 	listeners map[string][]func(EventData)
 }
@@ -30,3 +31,4 @@ type EventData struct {
 	Header bool
 	Html   bool
 }
+*/
