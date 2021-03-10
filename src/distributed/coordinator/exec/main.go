@@ -1,8 +1,10 @@
 package main
-/*
+
 import (
-	"distributed/coordinator"
+	//"distributed/coordinator"
 	"fmt"
+
+	"github.com/gopheramit/distributed-go-with-rabbitmq/src/distributed/coordinator"
 )
 
 func main() {
@@ -12,4 +14,3 @@ func main() {
 	var a string
 	fmt.Scanln(&a)
 }
-*/
