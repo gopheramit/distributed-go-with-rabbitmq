@@ -8,7 +8,7 @@ import (
 type SensorMessage struct {
 	Name string
 	Url  string
-	Js   bool
+	Js   string
 	//Value     float64
 	Timestamp time.Time
 }
